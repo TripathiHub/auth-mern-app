@@ -1,0 +1,743 @@
+/* =========================
+   GLOBAL
+========================= */
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+#root {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  display: block;
+  text-align: initial;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f7fb;
+  color: #1f2937;
+}
+#center {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* =========================
+   SIGNUP + LOGIN CONTAINER
+========================= */
+
+.auth-container,
+.login-container {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+}
+
+
+/* =========================
+   SIGNUP + LOGIN CARD
+========================= */
+
+.auth-card,
+.login-card {
+  width: 100%;
+  max-width: 420px;
+
+  background: #ffffff;
+
+  padding: 40px;
+
+  border-radius: 16px;
+
+  border: 1px solid #e5e7eb;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================
+   TITLES
+========================= */
+
+.auth-title {
+  text-align: center;
+
+  font-size: 30px;
+  font-weight: 700;
+
+  color: #111827;
+
+  margin-bottom: 8px;
+}
+
+.auth-subtitle {
+  text-align: center;
+
+  font-size: 14px;
+
+  color: #6b7280;
+
+  margin-bottom: 25px;
+}
+
+
+/* =========================
+   FORMS
+========================= */
+
+.auth-form,
+.login-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================
+   LABELS
+========================= */
+
+.auth-form label,
+.login-card label {
+  margin-top: 14px;
+  margin-bottom: 7px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #374151;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+.auth-form input,
+.login-card input {
+  width: 100%;
+
+  padding: 13px 14px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+
+  outline: none;
+
+  transition: all 0.2s ease;
+}
+
+
+/* Placeholder */
+
+.auth-form input::placeholder,
+.login-card input::placeholder {
+  color: #9ca3af;
+}
+
+
+/* Input focus */
+
+.auth-form input:focus,
+.login-card input:focus {
+  border-color: #2563eb;
+
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.auth-button {
+  width: 100%;
+
+  margin-top: 25px;
+
+  padding: 13px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #2563eb;
+
+  color: white;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.auth-button:hover {
+  background: #1d4ed8;
+}
+
+.auth-button:active {
+  transform: scale(0.98);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.auth-footer {
+  margin-top: 22px;
+
+  text-align: center;
+
+  font-size: 14px;
+
+  color: #6b7280;
+}
+
+.auth-footer a {
+  margin-left: 5px;
+
+  color: #2563eb;
+
+  font-weight: 600;
+
+  text-decoration: none;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================
+   LOGIN TITLE
+========================= */
+
+.login-card h2 {
+  text-align: center;
+
+  font-size: 30px;
+
+  margin-bottom: 25px;
+
+  color: #111827;
+}
+
+
+/* =========================
+   MOBILE RESPONSIVE (AUTH)
+========================= */
+
+@media (max-width: 480px) {
+
+  .auth-card,
+  .login-card {
+    padding: 28px 22px;
+  }
+
+  .auth-title,
+  .login-card h2 {
+    font-size: 26px;
+  }
+
+}
+
+
+/* =========================
+   LOGIN FOOTER
+========================= */
+
+.login-footer {
+  margin-top: 22px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 5px;
+
+  font-size: 14px;
+
+  color: #6b7280;
+}
+
+.login-footer a {
+  color: #2563eb;
+
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition: 0.2s;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================
+   PRODUCT PAGE
+========================= */
+
+.product-page {
+  width: 100%;
+  min-height: calc(100vh - 70px); /* leaves room for the fixed footer */
+  padding: 40px 20px;
+  background: #f5f6f8;
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.product-header {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 35px;
+  text-align: center;
+}
+
+.product-header h1 {
+  margin: 0;
+  font-size: 32px;
+  color: #222;
+}
+
+.product-header p {
+  margin-top: 8px;
+  color: #777;
+  font-size: 16px;
+}
+
+/* Welcome heading used directly inside product-container */
+.user-heading {
+  width: 100%;
+
+  margin-bottom: 10px;
+
+  font-size: 28px;
+  font-weight: 700;
+
+  color: #222;
+}
+
+
+/* =========================
+   PRODUCT CONTAINER (wrapper only — NOT a grid)
+========================= */
+
+.product-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  box-sizing: border-box;
+}
+
+/* =========================
+   PRODUCT GRID (the actual grid — child of product-container)
+========================= */
+
+.product-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(220px, 1fr)
+  );
+
+  gap: 25px;
+
+  box-sizing: border-box;
+}
+
+/* Loading state */
+.loading-text {
+  text-align: center;
+
+  padding: 60px 0;
+
+  font-size: 16px;
+
+  color: #777;
+}
+
+
+/* =========================
+   PRODUCT CARD
+========================= */
+
+.product-card {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  background: white;
+
+  border-radius: 15px;
+
+  overflow: hidden;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease;
+
+  box-sizing: border-box;
+}
+
+
+.product-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================
+   IMAGE
+========================= */
+
+/* Wrapper version (if you keep a <div className="product-image">) */
+.product-image {
+  width: 100%;
+  height: 200px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f8f8f8;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  display: block;
+
+  padding: 15px;
+
+  box-sizing: border-box;
+}
+
+/* Direct <img className="product-img"> version, as used in the React component */
+.product-img {
+  width: 100%;
+  height: 200px;
+
+  object-fit: contain;
+
+  display: block;
+
+  background: #f8f8f8;
+
+  padding: 15px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================
+   PRODUCT INFO
+========================= */
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.product-info h2,
+.product-name {
+  margin: 0 0 8px;
+
+  font-size: 20px;
+
+  color: #222;
+}
+
+.product-desc {
+  margin: 0 0 14px;
+
+  font-size: 14px;
+  line-height: 1.4;
+
+  color: #6b7280;
+
+  flex: 1; /* pushes price + button down so cards line up */
+}
+
+.product-info h3,
+.product-price {
+  margin: 0 0 18px;
+
+  font-size: 19px;
+  font-weight: 700;
+
+  color: #007bff;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.product-info button,
+.add-to-cart-btn {
+  width: 100%;
+
+  padding: 11px 15px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #007bff;
+
+  color: white;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+.product-info button:hover,
+.add-to-cart-btn:hover {
+  background: #0056b3;
+}
+
+.add-to-cart-btn:active {
+  transform: scale(0.98);
+}
+
+
+/* =========================
+   CART
+========================= */
+
+.cart-products {
+  width: 100%;
+  max-width: 1200px;
+  margin: 30px auto 0;
+  padding: 20px;
+
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+  box-sizing: border-box;
+}
+
+.cart-table {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  list-style: none;
+
+  padding: 12px 16px;
+  margin: 0 0 10px 0;
+
+  background: #f9fafb;
+  border-radius: 8px;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.cart-table:last-child {
+  margin-bottom: 0;
+}
+
+.cart-product-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.cart-product-price {
+  font-size: 15px;
+  font-weight: 700;
+  color: #007bff;
+}
+
+
+/* =========================
+   PRODUCT PAGE FOOTER (logout bar)
+========================= */
+
+.product-footer {
+  width: 100%;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  padding: 15px 30px;
+
+  background: #ffffff;
+
+  border-top: 1px solid #e5e7eb;
+
+  box-sizing: border-box;
+}
+
+.product-footer button {
+  padding: 10px 20px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #ef4444;
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+.product-footer button:hover {
+  background: #dc2626;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 700px) {
+
+  .product-page {
+    padding: 30px 15px;
+  }
+
+  .product-header h1 {
+    font-size: 27px;
+  }
+
+  .user-heading {
+    font-size: 24px;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+  }
+
+  .product-image,
+  .product-img {
+    height: 170px;
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+  .product-page {
+    padding: 25px 12px;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .product-image,
+  .product-img {
+    height: 220px;
+  }
+
+  .product-footer {
+    padding: 12px 18px;
+    justify-content: center;
+  }
+
+  .cart-table {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+}
+.product-footer {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 15px 30px;
+
+  background: #ffffff;
+
+  border-top: 1px solid #e5e7eb;
+
+  box-sizing: border-box;
+}
+
+.footer-cart-summary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.footer-cart-summary .cart-total {
+  color: #007bff;
+}
+
+@media (max-width: 480px) {
+  .product-footer {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

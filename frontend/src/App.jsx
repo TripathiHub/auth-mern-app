@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import Login from "./pages/login";
+import Login from "./pages/Login";
 import Products from "./pages/Products";
 import Signupauth from "./pages/Signupauth";
 import { ToastContainer } from "react-toastify";

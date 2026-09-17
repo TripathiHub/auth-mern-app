@@ -21,7 +21,7 @@ function Signupauth() {
       toast.warning("All feilds are required");
       return
     }
-    const url = "http://localhost:9000/signup"
+    const url = `${import.meta.env.VITE_API_URL}/signup`;
     const response = await fetch(url, {
       method: "POST",
       headers: {

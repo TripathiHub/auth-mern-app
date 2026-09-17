@@ -11,7 +11,7 @@ function Products({ setIsAuthenticated }) {
   async function fetchProducts() {
     try {
       setIsLoading(true);
-      const url = "http://localhost:9000/products";
+      const url = `${import.meta.env.VITE_API_URL}/products`;
       const headers = {
         headers: {
           "Authorization": localStorage.getItem("jwtToken")

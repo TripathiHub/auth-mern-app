@@ -20,7 +20,7 @@ function Login({setIsAuthenticated}) {
       toast.warning("All fields are required");
       return
     }
-    const url = "http://localhost:9000/login";
+    const url = `${import.meta.env.VITE_API_URL}/login`;
     const response = await fetch(url, {
       method: "POST",
       headers: {

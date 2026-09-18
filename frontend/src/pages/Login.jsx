@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
-function Login({setIsAuthenticated}) {
+function Login({ setIsAuthenticated }) {
   const navigate = useNavigate();
   const [logInput, setLogInput] = useState({
     email: "",
     password: ""
   })
+  const [isLoading, setIsLoading] = useEffect(false);
   function handleChange(e) {
     const { name, value } = e.target;
     setLogInput({
@@ -15,29 +16,37 @@ function Login({setIsAuthenticated}) {
     })
   }
   async function handleLogSubmit(e) {
-    e.preventDefault();
-    if (!logInput.email || !logInput.password) {
-      toast.warning("All fields are required");
-      return
+    try {
+      e.preventDefault();
+      if (!logInput.email || !logInput.password) {
+        toast.warning("All fields are required");
+        return
+      }
+      setIsLoading(true);
+      const url = `${import.meta.env.VITE_API_URL}/login`;
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify(logInput)
+      });
+      const result = await response.json();
+      const { success, message, name, jwtToken } = result;
+      if (success) {
+        toast.success(message);
+        localStorage.setItem("jwtToken", jwtToken);
+        localStorage.setItem("loggedInUser", name);
+        setIsAuthenticated(true);
+        navigate("/products");
+      } else {
+        toast.error(message);
+      }
+    } catch {
+      toast.error("Something went wrong");
     }
-    const url = `${import.meta.env.VITE_API_URL}/login`;
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify(logInput)
-    });
-    const result = await response.json();
-    const { success, message, name, jwtToken } = result;
-    if (success) {
-      toast.success(message);
-      localStorage.setItem("jwtToken", jwtToken);
-      localStorage.setItem("loggedInUser", name);
-      setIsAuthenticated(true);
-      navigate("/products");
-    } else {
-      toast.error(message);
+    finally {
+      setIsLoading(false);
     }
   }
   return (
@@ -62,8 +71,16 @@ function Login({setIsAuthenticated}) {
               value={logInput.password}
               onChange={handleChange}
             />
-            <button type="submit" className="auth-button">
-              Login
+            <button type="submit" className="auth-button" disabled={isLoading}>
+              {
+              isLoading ? (
+                <>
+                  <span className="spinner"></span>
+                  Logging Account
+                </>
+
+              ) : ("Login")
+            }
             </button>
           </form>
           <div className='login-footer'>

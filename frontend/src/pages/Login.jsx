@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React,{ useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
 function Login({ setIsAuthenticated }) {
@@ -7,7 +7,7 @@ function Login({ setIsAuthenticated }) {
     email: "",
     password: ""
   })
-  const [isLoading, setIsLoading] = useEffect(false);
+  const [isLoading, setIsLoading] = useState(false);
   function handleChange(e) {
     const { name, value } = e.target;
     setLogInput({
@@ -76,7 +76,7 @@ function Login({ setIsAuthenticated }) {
               isLoading ? (
                 <>
                   <span className="spinner"></span>
-                  Logging Account
+                  Logging in...
                 </>
 
               ) : ("Login")

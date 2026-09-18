@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify"
 function Signupauth() {
   const navigate = useNavigate();
@@ -8,6 +8,7 @@ function Signupauth() {
     email: "",
     password: ""
   })
+  const [isLoading, setIsLoading] = useState(false);
   function handleChange(e) {
     const { name, value } = e.target;
     setFormInput({
@@ -16,27 +17,36 @@ function Signupauth() {
     });
   };
   async function handleSubmit(e) {
-    e.preventDefault();
-    if (!formInput.email || !formInput.password || !formInput.name) {
-      toast.warning("All feilds are required");
-      return
-    }
-    const url = `${import.meta.env.VITE_API_URL}/signup`;
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify(formInput)
-    });
-    const result = await response.json();
-    if (result.success) {
-      toast.success(result.message);
-      setTimeout(()=>{
+    try {
+      e.preventDefault();
+      if (!formInput.email || !formInput.password || !formInput.name) {
+        toast.warning("All feilds are required");
+        return
+      }
+      setIsLoading(true);
+      const url = `${import.meta.env.VITE_API_URL}/signup`;
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify(formInput)
+      });
+      const result = await response.json();
+      if (result.success) {
+        toast.success(result.message);
+        setTimeout(() => {
           navigate("/login");
-      },1000)
-    } else {
-      toast.error(result.message);
+        }, 1000)
+      } else {
+        toast.error(result.message);
+      }
+    }
+    catch {
+      toast.error("Something went wrong");
+    }
+    finally {
+      setIsLoading(false);
     }
   }
   return (
@@ -79,8 +89,16 @@ function Signupauth() {
             placeholder="Enter your password..."
           />
 
-          <button type="submit" className="auth-button">
-            Sign Up
+          <button type="submit" className="auth-button" disabled={isLoading}>
+            {
+              isLoading ? (
+                <>
+                  <span className="spinner"></span>
+                  Creating Account
+                </>
+
+              ) : ("Singup")
+            }
           </button>
 
         </form>
